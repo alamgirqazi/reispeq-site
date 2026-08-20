@@ -1,0 +1,15 @@
+{
+  "name": "Reispeq Technologies LLC",
+  "short_name": "Reispeq",
+  "description": "Software development, auditing and inspection services for oilfield and industrial operations across the Gulf.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2f318c",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/apple-icon", "sizes": "180x180", "type": "image/png" }
+  ]
+}
