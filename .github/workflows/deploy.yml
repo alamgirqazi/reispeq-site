@@ -30,8 +30,13 @@ jobs:
 
       - name: Build static site
         env:
-          # Set these as repository variables (Settings → Secrets and variables → Actions → Variables).
-          # NEXT_PUBLIC_BASE_PATH is only needed for a project page (user.github.io/repo).
+          # Set these as repository variables: Settings → Secrets and variables
+          # → Actions → Variables. Any that you leave undefined arrive here as
+          # an empty string rather than unset — the build treats blank as
+          # "not configured" and falls back, so this is safe either way.
+          #
+          # NEXT_PUBLIC_BASE_PATH is only needed for a project page
+          # (user.github.io/repo). Leave it undefined for a custom domain.
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
           NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
           NEXT_PUBLIC_CONTACT_ENDPOINT: ${{ vars.NEXT_PUBLIC_CONTACT_ENDPOINT }}

@@ -18,8 +18,8 @@ type Status = "idle" | "submitting" | "success" | "error";
  * With neither set, the form composes a pre-filled email in the visitor's mail
  * client instead of failing silently.
  */
-const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
-const ACCESS_KEY = process.env.NEXT_PUBLIC_CONTACT_ACCESS_KEY;
+const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT?.trim() || undefined;
+const ACCESS_KEY = process.env.NEXT_PUBLIC_CONTACT_ACCESS_KEY?.trim() || undefined;
 
 function mailtoFallback(data: Record<string, string>) {
   const body = [

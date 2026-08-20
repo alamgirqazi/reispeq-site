@@ -8,11 +8,36 @@
  * No phone number is published on the site by choice — add `phone` here and a
  * row in the contact page details if that changes.
  */
+/**
+ * Reads a base URL from the environment defensively.
+ *
+ * CI systems substitute an EMPTY STRING for an undefined variable rather than
+ * leaving it unset — GitHub Actions does this with `${{ vars.X }}` — and `??`
+ * does not catch `""`. An empty value reaching `new URL()` throws during
+ * `generateMetadata`, which surfaces as an opaque digest-masked prerender
+ * error on a random page. So: treat blank as absent, tolerate a missing
+ * scheme, and drop any trailing slash.
+ */
+function resolveSiteUrl(value: string | undefined, fallback: string): string {
+  const raw = value?.trim();
+  if (!raw) return fallback;
+
+  const candidate = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+  try {
+    const url = new URL(candidate);
+    const path = url.pathname.replace(/\/+$/, "");
+    return `${url.origin}${path}`;
+  } catch {
+    console.warn(`[site] NEXT_PUBLIC_SITE_URL is not a valid URL (${raw}); falling back to ${fallback}`);
+    return fallback;
+  }
+}
+
 export const site = {
   name: "Reispeq Technologies LLC",
   shortName: "Reispeq",
   domain: "reispeq.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.reispeq.com",
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL, "https://www.reispeq.com"),
   email: "hello@reispeq.com",
   salesEmail: "sales@reispeq.com",
   founded: "2025",

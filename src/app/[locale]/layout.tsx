@@ -9,6 +9,7 @@ import { JsonLd, organizationSchema, websiteSchema } from "@/components/json-ld"
 import { getDictionary } from "@/i18n/dictionaries";
 import { locales, localeMeta, isLocale, type Locale } from "@/i18n/config";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/base-path";
 
 const plexSans = IBM_Plex_Sans({
   subsets: ["latin", "latin-ext"],
@@ -67,10 +68,10 @@ export async function generateMetadata({
       googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
     },
     icons: {
-      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+      icon: [{ url: asset("/icon.svg"), type: "image/svg+xml" }],
+      apple: [{ url: asset("/apple-touch-icon.png"), sizes: "180x180", type: "image/png" }],
     },
-    manifest: "/site.webmanifest",
+    manifest: asset("/site.webmanifest"),
   };
 }
 

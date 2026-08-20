@@ -47,11 +47,13 @@ Enable it once: **Settings → Pages → Source → GitHub Actions**.
 
 ### Environment variables
 
-All are optional; the site builds without them.
+All are optional. Blank, missing or malformed values fall back to sane defaults
+rather than breaking the build — CI systems pass undefined variables through as
+empty strings, and that must not take the site down.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Absolute base for canonicals, hreflang, sitemap and JSON-LD. Defaults to `https://www.reispeq.com`. **Set this before going live.** |
+| `NEXT_PUBLIC_SITE_URL` | Absolute base for canonicals, hreflang, sitemap and JSON-LD. Defaults to `https://www.reispeq.com`. **Set this before going live.** A missing `https://` is added for you. |
 | `NEXT_PUBLIC_BASE_PATH` | Sub-path for GitHub project pages only. |
 | `NEXT_PUBLIC_CONTACT_ENDPOINT` | Where the contact form posts (see below). |
 | `NEXT_PUBLIC_CONTACT_ACCESS_KEY` | Only for Web3Forms. |
