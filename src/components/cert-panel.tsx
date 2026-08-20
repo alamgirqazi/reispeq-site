@@ -27,7 +27,7 @@ export function CertPanel({ locale }: { locale: Locale }) {
       <figcaption className="flex items-center justify-between gap-4 border-b border-line bg-surface px-5 py-4">
         <div>
           <p className="text-[14px] font-semibold text-ink">{p.title}</p>
-          <p className="u-eyebrow mt-1.5 text-azure-500">{p.subtitle}</p>
+          <p className="mt-1 font-mono text-[11.5px] text-azure-500">{p.subtitle}</p>
         </div>
         <div aria-hidden className="flex gap-1.5">
           <span className="h-2 w-2 rounded-full bg-alert-500/45" />
@@ -36,14 +36,14 @@ export function CertPanel({ locale }: { locale: Locale }) {
         </div>
       </figcaption>
 
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[26rem] text-start text-[13.5px]">
+      <div className="max-w-full overflow-x-auto">
+        <table className="w-full min-w-[24rem] text-start text-[13.5px]">
           <thead>
             <tr className="border-b border-line-soft text-muted">
-              <th scope="col" className="u-eyebrow px-5 py-3 text-start font-medium">{p.columns.asset}</th>
-              <th scope="col" className="u-eyebrow px-5 py-3 text-start font-medium">{p.columns.cert}</th>
-              <th scope="col" className="u-eyebrow px-5 py-3 text-start font-medium">{p.columns.due}</th>
-              <th scope="col" className="u-eyebrow px-5 py-3 text-end font-medium">{p.columns.status}</th>
+              <th scope="col" className="px-5 py-3 text-start text-[12px] font-semibold text-muted">{p.columns.asset}</th>
+              <th scope="col" className="px-5 py-3 text-start text-[12px] font-semibold text-muted">{p.columns.cert}</th>
+              <th scope="col" className="px-5 py-3 text-start text-[12px] font-semibold text-muted">{p.columns.due}</th>
+              <th scope="col" className="px-5 py-3 text-end text-[12px] font-semibold text-muted">{p.columns.status}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-line-soft">

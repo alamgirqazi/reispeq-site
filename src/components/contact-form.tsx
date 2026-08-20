@@ -7,6 +7,38 @@ import { site } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+/**
+ * The site is a static export, so there is no server of ours to post to.
+ * Enquiries go straight to a form endpoint you own:
+ *
+ *   NEXT_PUBLIC_CONTACT_ENDPOINT   e.g. https://formspree.io/f/xxxxxxx
+ *                                  or   https://api.web3forms.com/submit
+ *   NEXT_PUBLIC_CONTACT_ACCESS_KEY optional — Web3Forms requires this
+ *
+ * With neither set, the form composes a pre-filled email in the visitor's mail
+ * client instead of failing silently.
+ */
+const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
+const ACCESS_KEY = process.env.NEXT_PUBLIC_CONTACT_ACCESS_KEY;
+
+function mailtoFallback(data: Record<string, string>) {
+  const body = [
+    `Name: ${data.name}`,
+    `Company: ${data.company}`,
+    `Email: ${data.email}`,
+    data.phone ? `Phone: ${data.phone}` : "",
+    `Country: ${data.country}`,
+    `Interest: ${data.interest}`,
+    "",
+    data.message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  return `mailto:${site.email}?subject=${encodeURIComponent(
+    `Website enquiry — ${data.company || data.name}`,
+  )}&body=${encodeURIComponent(body)}`;
+}
+
 const field =
   "w-full rounded-sm border border-line bg-white px-3.5 py-3 text-[15px] text-ink transition-colors placeholder:text-muted/60 focus:border-brand-400 focus:outline-none focus-visible:outline-none";
 const label = "block text-[13px] font-semibold text-ink-soft";
@@ -29,12 +61,31 @@ export function ContactForm({ t, locale }: { t: Dictionary["contact"]["form"]; l
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    // Honeypot: a real person never fills this in.
+    if (data.company_website) {
+      setStatus("success");
+      return;
+    }
+
+    if (!ENDPOINT) {
+      window.location.href = mailtoFallback(data);
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
     setStatus("submitting");
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, locale }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...data,
+          locale,
+          source: site.domain,
+          subject: `Website enquiry — ${data.company || data.name}`,
+          ...(ACCESS_KEY ? { access_key: ACCESS_KEY } : {}),
+        }),
       });
       if (!response.ok) throw new Error(String(response.status));
       setStatus("success");

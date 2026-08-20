@@ -6,7 +6,7 @@ import { CertPanel } from "@/components/cert-panel";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { JsonLd, breadcrumbSchema, softwareSchema } from "@/components/json-ld";
-import { ArrowIcon, CheckList, Eyebrow, NumberedGrid, Section, SectionHeading } from "@/components/ui";
+import { ArrowIcon, CheckList, NumberedGrid, Section, SectionHead } from "@/components/ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, type Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
@@ -54,7 +54,6 @@ export default async function CertiTrackPage({ params }: Props) {
           { label: t.nav.services, route: "services" },
           { label: t.nav.certitrack, route: "certitrack" },
         ]}
-        eyebrow={t.certitrack.hero.eyebrow}
         title={t.certitrack.hero.title}
         lead={t.certitrack.hero.lead}
       >
@@ -83,8 +82,7 @@ export default async function CertiTrackPage({ params }: Props) {
       <Section>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div className="lg:col-span-5">
-            <Eyebrow tone="azure">{t.certitrack.problem.eyebrow}</Eyebrow>
-            <h2 className="u-balance mt-5 text-3xl font-semibold text-ink sm:text-[2.25rem]">
+            <h2 className="u-balance text-[1.9rem] font-semibold text-ink sm:text-[2.35rem]">
               {t.certitrack.problem.title}
             </h2>
             <div className="mt-6 space-y-5">
@@ -95,14 +93,14 @@ export default async function CertiTrackPage({ params }: Props) {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-7 lg:ps-8">
+          <div className="min-w-0 lg:col-span-7 lg:ps-8">
             <CertPanel locale={locale} />
           </div>
         </div>
       </Section>
 
       <Section tone="surface">
-        <SectionHeading eyebrow={t.certitrack.features.eyebrow} title={t.certitrack.features.title} />
+        <SectionHead title={t.certitrack.features.title} />
         <div className="mt-14">
           <NumberedGrid items={t.certitrack.features.items} columns={3} />
         </div>

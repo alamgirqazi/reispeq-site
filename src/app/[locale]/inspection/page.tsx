@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { JsonLd, breadcrumbSchema, serviceSchema } from "@/components/json-ld";
-import { CheckList, NumberedGrid, Section, SectionHeading } from "@/components/ui";
+import { CheckList, NumberedGrid, Section, SectionHead } from "@/components/ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, type Locale } from "@/i18n/config";
 import { buildMetadata, keywordSets } from "@/lib/seo";
@@ -57,7 +57,6 @@ export default async function Page({ params }: Props) {
           { label: t.nav.services, route: "services" },
           { label: t.nav.inspection, route: "inspection" },
         ]}
-        eyebrow={page.hero.eyebrow}
         title={page.hero.title}
         lead={page.hero.lead}
       />
@@ -85,7 +84,7 @@ export default async function Page({ params }: Props) {
       <Section tone="surface">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading title={page.deliverables.title} />
+            <SectionHead title={page.deliverables.title} />
             <p className="u-pretty mt-6 text-[15.5px] leading-relaxed text-muted">{t.common.scopeNote}</p>
           </div>
           <div className="lg:col-span-7">

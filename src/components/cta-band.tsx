@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Eyebrow, ArrowIcon } from "./ui";
+import { ArrowIcon } from "./ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
@@ -17,8 +17,7 @@ export function CtaBand({ locale }: { locale: Locale }) {
       />
       <div className="u-shell relative grid gap-10 py-16 lg:grid-cols-12 lg:items-end lg:py-20">
         <div className="lg:col-span-7">
-          <Eyebrow tone="light">{t.home.cta.eyebrow}</Eyebrow>
-          <h2 className="u-balance mt-5 text-3xl font-semibold sm:text-4xl">{t.home.cta.title}</h2>
+          <h2 className="u-balance text-[2.1rem] font-semibold sm:text-[2.6rem]">{t.home.cta.title}</h2>
           <p className="u-pretty mt-5 max-w-xl text-[16.5px] leading-relaxed text-white/65">
             {t.home.cta.body}
           </p>

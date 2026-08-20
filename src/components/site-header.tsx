@@ -32,29 +32,8 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/92 backdrop-blur-md">
-      {/* utility bar */}
-      <div className="hidden border-b border-line-soft bg-surface lg:block">
-        <div className="u-shell flex h-9 items-center justify-between">
-          <p className="u-eyebrow text-muted">
-            {t.regionsStrip.label}
-            <span className="mx-2 opacity-40">/</span>
-            <span className="text-ink-soft">{t.regionsStrip.items.join(" · ")}</span>
-          </p>
-          <div className="flex items-center gap-5">
-            <a
-              href={`mailto:${site.email}`}
-              className="text-[13px] font-medium text-muted transition-colors hover:text-brand-600"
-            >
-              <bdi dir="ltr">{site.email}</bdi>
-            </a>
-            <span aria-hidden className="h-3 w-px bg-line" />
-            <LanguageSwitch locale={locale} />
-          </div>
-        </div>
-      </div>
-
       {/* main bar */}
-      <div className="u-shell flex h-[68px] items-center justify-between gap-6">
+      <div className="u-shell flex h-[72px] items-center justify-between gap-6">
         <Link href={href(locale, "home")} aria-label={site.name} className="shrink-0">
           <ReispeqLogo />
         </Link>
@@ -99,16 +78,14 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
+          <LanguageSwitch locale={locale} />
           <Link
             href={href(locale, "contact")}
             className="hidden rounded-sm bg-brand-500 px-4.5 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-brand-600 sm:inline-flex"
           >
             {t.nav.cta}
           </Link>
-          <div className="lg:hidden">
-            <LanguageSwitch locale={locale} />
-          </div>
           <MobileNav
             items={mobileItems}
             ctaHref={href(locale, "contact")}

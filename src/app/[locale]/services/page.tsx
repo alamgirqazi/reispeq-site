@@ -47,7 +47,6 @@ export default async function ServicesPage({ params }: Props) {
           { label: t.nav.home, route: "home" },
           { label: t.nav.services, route: "services" },
         ]}
-        eyebrow={t.servicesIndex.hero.eyebrow}
         title={t.servicesIndex.hero.title}
         lead={t.servicesIndex.hero.lead}
       />
@@ -57,7 +56,7 @@ export default async function ServicesPage({ params }: Props) {
           {serviceKeys.map((key, i) => (
             <li key={key} className="border-b border-line sm:[&:nth-child(odd)]:border-e">
               <Link href={href(locale, key)} className="group flex h-full flex-col p-7 sm:p-9">
-                <span className="u-eyebrow tabular-nums text-brand-300">
+                <span className="font-mono text-[15px] font-medium tabular-nums text-brand-300">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="u-balance mt-4 text-xl font-semibold text-ink transition-colors group-hover:text-brand-600 sm:text-[1.4rem]">

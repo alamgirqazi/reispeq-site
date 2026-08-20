@@ -72,7 +72,7 @@ export function ReispeqLogo({
       <ReispeqMark className={`h-9 w-9 shrink-0 ${markColor}`} />
       <span className="flex flex-col leading-none">
         <span className={`text-[15px] font-semibold tracking-[0.09em] ${nameColor}`}>REISPEQ</span>
-        <span className={`u-eyebrow mt-[4px] text-[8.5px] tracking-[0.26em] ${subColor}`}>
+        <span className={`mt-[4px] text-[8.5px] font-medium tracking-[0.26em] uppercase ${subColor}`}>
           Technologies
         </span>
       </span>

@@ -7,7 +7,9 @@ const pathFor = (key: RouteKey) => routes.find((r) => r.key === key)!.path;
 
 /** Absolute URL for a locale + route, used for canonical, hreflang and JSON-LD. */
 export function absoluteUrl(locale: Locale, key: RouteKey): string {
-  return `${site.url}${localePath(locale, pathFor(key))}`;
+  // `trailingSlash: true` in next.config means the exported page is served at
+  // /en/auditing/ — canonical, hreflang and sitemap must agree with that.
+  return `${site.url}${localePath(locale, pathFor(key))}/`;
 }
 
 export function buildMetadata({
@@ -24,11 +26,11 @@ export function buildMetadata({
   keywords?: string[];
 }): Metadata {
   const canonical = absoluteUrl(locale, route);
-  // The OG image is generated at `[locale]/opengraph-image`. Declaring it here
-  // keeps it on every page — page-level `openGraph` otherwise replaces the
-  // file-convention default.
+  // A committed asset rather than a generated route: static hosts serve
+  // extension-less files as application/octet-stream, which breaks previews.
+  // Regenerate public/og.png only if the brand line changes.
   const ogImage = {
-    url: `${site.url}/${locale}/opengraph-image`,
+    url: `${site.url}/og.png`,
     width: 1200,
     height: 630,
     alt: `${site.name} — ${title}`,

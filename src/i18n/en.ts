@@ -32,14 +32,12 @@ export const en = {
       "Scope, duration and reporting format are agreed with you before mobilisation — no open-ended engagements.",
   },
 
-  regionsStrip: {
-    label: "Serving",
+  regions: {
     items: ["Oman", "UAE", "Saudi Arabia", "Qatar", "Kuwait", "Bahrain"],
   },
 
   home: {
     hero: {
-      eyebrow: "Software · Auditing · Inspection",
       title: "Operational assurance, built into software.",
       lead:
         "Reispeq Technologies LLC builds purpose-made applications and delivers auditing, inspection and technical investigation services for oilfield and industrial operators across the Gulf — so equipment, certificates and quality records hold up when they are checked.",
@@ -65,7 +63,6 @@ export const en = {
       footnote: "Expiry alerts, inspection history and evidence in one controlled register.",
     },
     intro: {
-      eyebrow: "Positioning",
       title: "More than a service provider.",
       body: [
         "Most operational problems are not mysteries. They are gaps — a certificate nobody renewed, a corrective action that was closed without evidence, an inspection record that lives in someone's inbox. Those gaps stay invisible until an audit, an incident or a client verification puts them under a light.",
@@ -73,13 +70,11 @@ export const en = {
       ],
     },
     services: {
-      eyebrow: "What we do",
       title: "Two capabilities, one discipline.",
       lead:
         "Digital tools and technical assurance, delivered by people who have worked inside quality management systems rather than around them.",
     },
     method: {
-      eyebrow: "How we work",
       title: "A short, evidence-led engagement.",
       steps: [
         {
@@ -105,7 +100,6 @@ export const en = {
       ],
     },
     product: {
-      eyebrow: "Our product",
       title: "CertiTrack Plus",
       lead:
         "A certification and compliance register built for oilfield operators and service companies. It answers one question that costs real money when the answer is wrong: is this equipment certified, right now, and can you prove it?",
@@ -119,7 +113,6 @@ export const en = {
       externalCta: "Visit certitrackplus.com",
     },
     why: {
-      eyebrow: "Why Reispeq",
       title: "What clients get that they were not getting before.",
       items: [
         {
@@ -150,7 +143,6 @@ export const en = {
       ],
     },
     cta: {
-      eyebrow: "Next step",
       title: "Tell us where the gap is.",
       body:
         "A short call is usually enough to tell whether the answer is an application, an audit, an inspection — or nothing at all. We will say so either way.",
@@ -161,7 +153,6 @@ export const en = {
 
   about: {
     hero: {
-      eyebrow: "About",
       title: "A technology and quality-assurance company for demanding operations.",
       lead:
         "Reispeq Technologies LLC combines software development capability with auditing, inspection and technical investigation experience — serving customers who need operational control they can evidence.",
@@ -190,7 +181,6 @@ export const en = {
       },
     ],
     values: {
-      eyebrow: "Principles",
       title: "How we hold ourselves to it.",
       items: [
         {
@@ -218,7 +208,6 @@ export const en = {
 
   software: {
     hero: {
-      eyebrow: "Service 01",
       title: "Application and software development",
       lead:
         "Purpose-built digital tools for specific business, operational and compliance problems — designed around your workflow, your approvals and your evidence requirements.",
@@ -284,7 +273,6 @@ export const en = {
 
   certitrack: {
     hero: {
-      eyebrow: "Product",
       title: "CertiTrack Plus",
       lead:
         "A controlled platform for equipment certification, inspection history, expiry alerts and compliance readiness — developed by Reispeq for oilfield and industrial operators.",
@@ -292,7 +280,6 @@ export const en = {
       secondaryCta: "Visit certitrackplus.com",
     },
     problem: {
-      eyebrow: "The problem",
       title: "Certificates fail quietly.",
       body: [
         "Equipment certification rarely fails loudly. A certificate expires while the asset stays in service. An inspection record exists but nobody can find the evidence behind it. A register is accurate on the day it was built and drifts every week afterwards.",
@@ -300,7 +287,6 @@ export const en = {
       ],
     },
     features: {
-      eyebrow: "Capabilities",
       title: "What CertiTrack Plus manages",
       items: [
         {
@@ -351,7 +337,6 @@ export const en = {
 
   auditing: {
     hero: {
-      eyebrow: "Service 03",
       title: "Auditing services",
       lead:
         "API Q1 and API Q2 audit support, internal audits, supplier assessments and readiness reviews — evidence-led, and written to be usable after we leave.",
@@ -410,7 +395,6 @@ export const en = {
 
   inspection: {
     hero: {
-      eyebrow: "Service 04",
       title: "Inspection services",
       lead:
         "Independent equipment inspection for oilfield and industrial operations — condition, documentation and compliance verified before the equipment carries a load or a pressure.",
@@ -467,7 +451,6 @@ export const en = {
 
   investigations: {
     hero: {
-      eyebrow: "Service 05",
       title: "Damage beyond repair investigations",
       lead:
         "Structured technical investigation of failed or damaged equipment — evidence collected, causes assessed and a report your client, insurer or supplier can act on.",
@@ -511,7 +494,6 @@ export const en = {
 
   servicesIndex: {
     hero: {
-      eyebrow: "Services",
       title: "Software that holds the record. People who verify it.",
       lead:
         "Five services, delivered separately or together. Most engagements start with one and expand once the first gap is closed.",
@@ -552,7 +534,6 @@ export const en = {
 
   contact: {
     hero: {
-      eyebrow: "Contact",
       title: "Start with the problem, not the product.",
       lead:
         "Tell us what is not working — an audit approaching, equipment you cannot evidence, a process held together by spreadsheets. We will tell you what we would do, and whether we are the right people to do it.",

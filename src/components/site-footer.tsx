@@ -35,16 +35,18 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <p className="u-pretty mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">
               {t.footer.tagline}
             </p>
-            <p className="u-eyebrow mt-8 text-white/35">{t.footer.regionsTitle}</p>
-            <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-white/70">
-              {t.regionsStrip.items.join(" · ")}
-            </p>
+            <p className="mt-8 text-[13px] font-semibold text-white">{t.footer.regionsTitle}</p>
+            <ul className="mt-3 flex max-w-sm flex-wrap gap-x-5 gap-y-1.5 text-[14px] text-white/60">
+              {t.regions.items.map((region) => (
+                <li key={region}>{region}</li>
+              ))}
+            </ul>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3 lg:col-span-7">
             {columns.map((col) => (
               <div key={col.title}>
-                <p className="u-eyebrow text-white/35">{col.title}</p>
+                <p className="text-[13px] font-semibold text-white">{col.title}</p>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.href}>
@@ -61,7 +63,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             ))}
 
             <div>
-              <p className="u-eyebrow text-white/35">{t.footer.productCol}</p>
+              <p className="text-[13px] font-semibold text-white">{t.footer.productCol}</p>
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <Link
@@ -86,7 +88,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 </li>
               </ul>
 
-              <p className="u-eyebrow mt-8 text-white/35">{t.footer.contactCol}</p>
+              <p className="mt-8 text-[13px] font-semibold text-white">{t.footer.contactCol}</p>
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <a
@@ -94,14 +96,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                     className="text-[14.5px] text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
                   >
                     <bdi dir="ltr">{site.email}</bdi>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`tel:${site.phoneHref}`}
-                    className="text-[14.5px] text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
-                  >
-                    <bdi dir="ltr">{site.phone}</bdi>
                   </a>
                 </li>
               </ul>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Eyebrow } from "./ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { href, type RouteKey } from "@/lib/routes";
@@ -41,7 +40,6 @@ export function Breadcrumbs({
 export function PageHero({
   locale,
   trail,
-  eyebrow,
   title,
   lead,
   note,
@@ -49,7 +47,6 @@ export function PageHero({
 }: {
   locale: Locale;
   trail: { label: string; route: RouteKey }[];
-  eyebrow: string;
   title: string;
   lead: string;
   note?: string;
@@ -64,11 +61,12 @@ export function PageHero({
       />
       <div className="u-shell relative py-14 lg:py-20">
         <Breadcrumbs locale={locale} trail={trail} />
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="u-balance mt-5 max-w-4xl text-[2.15rem] font-semibold text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-          {title}
-        </h1>
-        <p className="u-pretty mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">{lead}</p>
+        <div className="grid gap-x-14 gap-y-6 lg:grid-cols-12">
+          <h1 className="u-balance text-[2.15rem] font-semibold text-ink sm:text-[2.75rem] lg:col-span-7 lg:text-[3.15rem]">
+            {title}
+          </h1>
+          <p className="u-pretty text-[16.5px] leading-relaxed text-ink-soft lg:col-span-5 lg:pt-3">{lead}</p>
+        </div>
         {note ? (
           <p className="mt-6 max-w-2xl border-s-2 border-brand-200 ps-4 text-[14px] leading-relaxed text-muted">
             {note}

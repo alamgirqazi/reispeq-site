@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { JsonLd, breadcrumbSchema, serviceSchema } from "@/components/json-ld";
-import { CheckList, NumberedGrid, Section, SectionHeading } from "@/components/ui";
+import { CheckList, NumberedGrid, Section, SectionHead } from "@/components/ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, type Locale } from "@/i18n/config";
 import { buildMetadata, keywordSets } from "@/lib/seo";
@@ -56,7 +56,6 @@ export default async function InvestigationsPage({ params }: Props) {
           { label: t.nav.services, route: "services" },
           { label: t.nav.investigations, route: "investigations" },
         ]}
-        eyebrow={t.investigations.hero.eyebrow}
         title={t.investigations.hero.title}
         lead={t.investigations.hero.lead}
         note={t.investigations.note}
@@ -85,7 +84,7 @@ export default async function InvestigationsPage({ params }: Props) {
       <Section tone="surface">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading title={t.investigations.uses.title} />
+            <SectionHead title={t.investigations.uses.title} />
           </div>
           <div className="lg:col-span-7">
             <CheckList items={t.investigations.uses.items} />

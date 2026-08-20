@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { JsonLd, breadcrumbSchema, serviceSchema } from "@/components/json-ld";
-import { Button, CheckList, NumberedGrid, Section, SectionHeading } from "@/components/ui";
+import { Button, CheckList, NumberedGrid, Section, SectionHead } from "@/components/ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale, type Locale } from "@/i18n/config";
 import { href } from "@/lib/routes";
@@ -57,7 +57,6 @@ export default async function SoftwarePage({ params }: Props) {
           { label: t.nav.services, route: "services" },
           { label: t.nav.software, route: "software" },
         ]}
-        eyebrow={t.software.hero.eyebrow}
         title={t.software.hero.title}
         lead={t.software.hero.lead}
       />
@@ -86,7 +85,7 @@ export default async function SoftwarePage({ params }: Props) {
       </Section>
 
       <Section tone="surface">
-        <SectionHeading title={t.software.process.title} />
+        <SectionHead title={t.software.process.title} />
         <div className="mt-12">
           <NumberedGrid items={t.software.process.steps} columns={2} />
         </div>

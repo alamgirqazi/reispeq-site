@@ -2,8 +2,11 @@
  * Single source of truth for company facts that appear in metadata,
  * structured data, the footer and the contact page.
  *
- * NOTE FOR REISPEQ: the phone number, address and licence number below are
- * placeholders. Replace them here once and every page updates.
+ * NOTE FOR REISPEQ: the office locations below are placeholders. Replace them
+ * here once and every page, footer and schema.org block updates.
+ *
+ * No phone number is published on the site by choice — add `phone` here and a
+ * row in the contact page details if that changes.
  */
 export const site = {
   name: "Reispeq Technologies LLC",
@@ -12,9 +15,6 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.reispeq.com",
   email: "hello@reispeq.com",
   salesEmail: "sales@reispeq.com",
-  phone: "+968 0000 0000", // TODO: replace with the live number
-  phoneHref: "+9680000000", // TODO: replace with the live number
-  whatsapp: "9680000000", // TODO: replace or remove
   founded: "2025",
   legalForm: "LLC",
   addresses: [

@@ -8,7 +8,7 @@ export default function LocaleNotFound() {
   const t = getDictionary(defaultLocale);
   return (
     <section className="u-shell flex min-h-[60vh] flex-col justify-center py-24">
-      <p className="u-eyebrow text-brand-300">{t.notFound.code}</p>
+      <p className="font-mono text-[15px] font-medium text-brand-300">{t.notFound.code}</p>
       <h1 className="u-balance mt-5 max-w-2xl text-3xl font-semibold text-ink sm:text-4xl">
         {t.notFound.title}
       </h1>

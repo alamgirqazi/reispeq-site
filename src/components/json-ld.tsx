@@ -28,7 +28,6 @@ export function organizationSchema(locale: Locale) {
     logo: `${site.url}/logo-reispeq.svg`,
     image: `${site.url}/opengraph-image`,
     email: site.email,
-    telephone: site.phone,
     foundingDate: site.founded,
     knowsLanguage: ["en", "ar"],
     address: site.addresses.map((a) => ({

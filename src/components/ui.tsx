@@ -1,43 +1,44 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export function Eyebrow({ children, tone = "brand" }: { children: ReactNode; tone?: "brand" | "azure" | "light" }) {
-  const color =
-    tone === "light" ? "text-azure-200" : tone === "azure" ? "text-azure-500" : "text-brand-500";
-  return (
-    <p className={`u-eyebrow flex items-center gap-2.5 ${color}`}>
-      <span aria-hidden className="inline-block h-px w-6 bg-current opacity-45" />
-      {children}
-    </p>
-  );
-}
-
-export function SectionHeading({
-  eyebrow,
+/**
+ * Section header set as an editorial masthead: a hairline that spans the
+ * measure, the statement on the left, its qualifier on the right. No labels,
+ * no ornament — the heading is expected to carry the section on its own.
+ */
+export function SectionHead({
   title,
   lead,
   tone = "dark",
-  align = "start",
   as: As = "h2",
+  className = "",
 }: {
-  eyebrow?: string;
   title: string;
   lead?: string;
   tone?: "dark" | "light";
-  align?: "start" | "center";
   as?: "h1" | "h2" | "h3";
+  className?: string;
 }) {
+  const rule = tone === "light" ? "border-white/15" : "border-line";
   const titleColor = tone === "light" ? "text-white" : "text-ink";
-  const leadColor = tone === "light" ? "text-white/70" : "text-ink-soft";
+  const leadColor = tone === "light" ? "text-white/65" : "text-ink-soft";
+
   return (
-    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      {eyebrow ? <Eyebrow tone={tone === "light" ? "light" : "brand"}>{eyebrow}</Eyebrow> : null}
-      <As
-        className={`u-balance mt-5 text-3xl font-semibold sm:text-4xl lg:text-[2.75rem] ${titleColor}`}
-      >
-        {title}
-      </As>
-      {lead ? <p className={`u-pretty mt-5 text-lg leading-relaxed ${leadColor}`}>{lead}</p> : null}
+    <div className={`border-t ${rule} pt-9 ${className}`}>
+      <div className="grid gap-x-14 gap-y-5 lg:grid-cols-12">
+        <As
+          className={`u-balance text-[1.9rem] font-semibold sm:text-[2.35rem] lg:text-[2.6rem] ${titleColor} ${
+            lead ? "lg:col-span-6" : "lg:col-span-8"
+          }`}
+        >
+          {title}
+        </As>
+        {lead ? (
+          <p className={`u-pretty text-[16.5px] leading-relaxed lg:col-span-5 lg:col-start-8 lg:pt-2.5 ${leadColor}`}>
+            {lead}
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -136,7 +137,7 @@ export function NumberedGrid({
         {items.map((item, i) => (
           <li key={item.title} className={`border-b border-e ${border} py-7 pe-7`}>
             <div className="flex gap-4">
-              <span className={`u-eyebrow mt-1.5 shrink-0 tabular-nums ${num}`}>
+              <span className={`mt-0.5 shrink-0 font-mono text-[15px] font-medium tabular-nums ${num}`}>
                 {String(start + i).padStart(2, "0")}
               </span>
               <div>

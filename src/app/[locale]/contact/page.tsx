@@ -33,7 +33,6 @@ export default async function ContactPage({ params }: Props) {
 
   const details = [
     { label: t.contact.direct.emailLabel, value: site.email, href: `mailto:${site.email}`, isolate: true },
-    { label: t.contact.direct.phoneLabel, value: site.phone, href: `tel:${site.phoneHref}`, isolate: true },
     { label: t.contact.direct.hoursLabel, value: t.contact.direct.hours },
     { label: t.contact.direct.responseLabel, value: t.contact.direct.response },
   ];
@@ -56,7 +55,6 @@ export default async function ContactPage({ params }: Props) {
           { label: t.nav.home, route: "home" },
           { label: t.nav.contact, route: "contact" },
         ]}
-        eyebrow={t.contact.hero.eyebrow}
         title={t.contact.hero.title}
         lead={t.contact.hero.lead}
       />
@@ -76,7 +74,7 @@ export default async function ContactPage({ params }: Props) {
               <dl className="mt-6 space-y-5">
                 {details.map((item) => (
                   <div key={item.label}>
-                    <dt className="u-eyebrow text-muted">{item.label}</dt>
+                    <dt className="text-[13px] font-semibold text-muted">{item.label}</dt>
                     <dd className="mt-1.5 text-[15px] font-medium text-ink">
                       {item.href ? (
                         <a href={item.href} className="underline-offset-4 hover:text-brand-600 hover:underline">
@@ -89,7 +87,7 @@ export default async function ContactPage({ params }: Props) {
                   </div>
                 ))}
                 <div>
-                  <dt className="u-eyebrow text-muted">{t.contact.direct.officesLabel}</dt>
+                  <dt className="text-[13px] font-semibold text-muted">{t.contact.direct.officesLabel}</dt>
                   <dd className="mt-1.5 space-y-1 text-[15px] text-ink">
                     {site.addresses.map((address) => (
                       <p key={address.id}>{address.lines.join(", ")}</p>
