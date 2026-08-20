@@ -33,7 +33,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/92 backdrop-blur-md">
       {/* main bar */}
-      <div className="u-shell flex h-[72px] items-center justify-between gap-6">
+      <div className="u-shell flex h-[var(--header-h)] items-center justify-between gap-6">
         <Link href={href(locale, "home")} aria-label={site.name} className="shrink-0">
           <ReispeqLogo />
         </Link>

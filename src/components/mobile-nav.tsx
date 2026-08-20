@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n/config";
@@ -23,7 +24,10 @@ export function MobileNav({
   locale: Locale;
 }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -37,6 +41,38 @@ export function MobileNav({
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const panel = (
+    <div
+      id="mobile-nav-panel"
+      lang={locale}
+      className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-40 overflow-y-auto overscroll-contain border-t border-line bg-white lg:hidden"
+    >
+      <nav className="u-shell py-6" aria-label={openLabel}>
+        <ul className="divide-y divide-line-soft">
+          {items.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="flex items-center justify-between py-4 text-base font-medium text-ink"
+              >
+                {item.label}
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden className="u-dir-flip h-4 w-4 text-brand-300">
+                  <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          href={ctaHref}
+          className="mt-6 flex w-full items-center justify-center rounded-sm bg-brand-500 px-5 py-3.5 text-sm font-semibold text-white"
+        >
+          {ctaLabel}
+        </Link>
+      </nav>
+    </div>
+  );
 
   return (
     <>
@@ -57,37 +93,13 @@ export function MobileNav({
         </svg>
       </button>
 
-      {open ? (
-        <div
-          id="mobile-nav-panel"
-          lang={locale}
-          className="fixed inset-x-0 top-[var(--header-h,68px)] bottom-0 z-40 overflow-y-auto border-t border-line bg-white lg:hidden"
-        >
-          <nav className="u-shell py-6">
-            <ul className="divide-y divide-line-soft">
-              {items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="flex items-center justify-between py-4 text-base font-medium text-ink"
-                  >
-                    {item.label}
-                    <svg viewBox="0 0 20 20" fill="none" aria-hidden className="u-dir-flip h-4 w-4 text-brand-300">
-                      <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={ctaHref}
-              className="mt-6 flex w-full items-center justify-center rounded-sm bg-brand-500 px-5 py-3.5 text-sm font-semibold text-white"
-            >
-              {ctaLabel}
-            </Link>
-          </nav>
-        </div>
-      ) : null}
+      {/*
+        Portalled to <body> on purpose. The header carries `backdrop-blur`,
+        which makes it a containing block for fixed-position descendants — a
+        panel rendered inside it would resolve `top`/`bottom` against the 72px
+        header rather than the viewport and collapse to a few pixels tall.
+      */}
+      {mounted && open ? createPortal(panel, document.body) : null}
     </>
   );
 }

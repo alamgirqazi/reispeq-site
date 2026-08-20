@@ -54,6 +54,8 @@
 :root {
   color-scheme: light;
   --shell: 1240px;
+  /* Height of the sticky header bar. The mobile nav panel offsets by this. */
+  --header-h: 72px;
 }
 
 html {
